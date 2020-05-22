@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Prime Checker</string>
+    <string name="app_title">Prime Checker</string>
+    <string name="app_tag_line">The Fastest Primality Test On Android</string>
+    <string name="prime_candidate_input_hint">1000001</string>
+    <string name="prime_candidate_input_label">Check</string>
+</resources>
