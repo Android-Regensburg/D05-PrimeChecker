@@ -3,8 +3,18 @@ package de.ur.mi.android.primechecker.primes;
 import java.io.Serializable;
 import java.math.BigInteger;
 
+/**
+ * Diese Klasse bildet eine Zahl ab, die darauf getestet werden soll, ob diese "prim" ist, d.h. ob
+ * es sich um eine Primzahl handelt. Für den Primzahlkandidat werde der numerische Wert der Zahl,
+ * der Status der Überprüfung und deren Ergebnis gespeichert.
+ */
 public class PrimeCandidate implements Serializable {
 
+    /**
+     * Enum zur Abbildung des aktuellen Prüfungstatus. Vor und während der Überprüfung des Kandidaten
+     * ist der Status "Pending", nach Abschluss der Überprüfung soll der Wert auf "Checked" gesetzt
+     * werden.
+     */
     public enum State {
         PENDING("Pending ..."),
         CHECKED("Checked");
@@ -17,6 +27,12 @@ public class PrimeCandidate implements Serializable {
 
     }
 
+    /**
+     * Enum zur Abbildung des Ergebnis der Überprüfung. Vor und während der Überprüfung des Kandidaten
+     * ist das Ergebnis "Unavailable". Nach abgeschlossener Prüfung soll das Ergebnis entweder auf
+     * "Prime" (der Primzahlkandidat ist eine Primzahl) oder auf "Not a Prime" (Der Kandidat ist keine
+     * Primzahl) gesetzt werden.
+     */
     public enum Result {
         NOT_AVAILABLE("Unavailable"),
         NO_PRIME("Not A Prime"),
@@ -31,6 +47,13 @@ public class PrimeCandidate implements Serializable {
 
     private State state;
     private Result result;
+    /**
+     * Hier wird die Zahl gespeichert, die geprüft werden soll. Als Datentyp wird BigInteger
+     * verwendet, was theoretisch einen beliebig großen Wert erlaubt: BigInteger erlaubt die
+     * Angabe eines numerischen Wert als String, also als beliebig lange Abfolge von Ziffern und
+     * stellt die notwendigen mathematischen Operationen zum Rechnen mit solchen Werten als Methoden
+     * bereit (add, subtract, multiply, divide, mod).
+     */
     private BigInteger candidate;
     private BigInteger smallestDivisor;
 
